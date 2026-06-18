@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Almoxarifado Premium - Controle de Insumos MDF</title>
+    <title>Almoxarifado Premium - KS Cortes</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -13,18 +13,23 @@
            --- DESIGN SYSTEM E INTERFACE OPERACIONAL PREMIUM (RESPONSIVO) ---
            ========================================================================== */
         :root {
-            --cor-principal: #2e7d32; /* Verde Industrial / Almoxarifado */
+            --cor-principal: #2e7d32; 
             --cor-principal-hover: #1b5e20;
-            --cor-fundo: #f4f6f9;
+            --cor-fundo: #f8fafc;
             --cor-card: #ffffff;
-            --cor-texto: #1e293b;
-            --cor-texto-secundario: #64748b;
-            --cor-borda: #e2e8f0;
-            --border-radius-lg: 12px;
-            --border-radius-md: 8px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
-            --transition: all 0.2s ease-in-out;
+            --cor-texto: #0f172a;
+            --cor-texto-secundario: #475569;
+            --cor-borda: #cbd5e1;
+            --border-radius-lg: 16px;
+            --border-radius-md: 10px;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.05);
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -37,11 +42,11 @@
             align-items: center;
             color: var(--cor-texto);
             -webkit-font-smoothing: antialiased;
-            padding-bottom: 70px;
+            padding-bottom: 85px;
         }
 
         @media(min-width: 950px) {
-            body { padding: 20px; padding-bottom: 20px; }
+            body { padding: 24px; padding-bottom: 24px; }
         }
 
         #tela-login {
@@ -53,90 +58,79 @@
             top: 0; left: 0; width: 100vw; height: 100vh;
             background-color: var(--cor-fundo);
             z-index: 9999;
-            padding: 16px;
-            box-sizing: border-box;
+            padding: 20px;
         }
 
         .card-login {
             background: var(--cor-card);
-            padding: 30px 20px;
+            padding: 32px 24px;
             border-radius: var(--border-radius-lg);
             box-shadow: var(--shadow-md);
             width: 100%;
-            max-width: 380px;
-            box-sizing: border-box;
+            max-width: 400px;
             text-align: center;
-            border-top: 5px solid var(--cor-principal);
+            border-top: 6px solid var(--cor-principal);
         }
 
         #conteudo-sistema {
             display: none;
             width: 100%;
-            max-width: 1180px;
+            max-width: 1200px;
         }
 
         .brand-header {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            gap: 12px;
+            gap: 14px;
             background: var(--cor-card);
-            padding: 12px 16px;
+            padding: 16px;
             border-radius: var(--border-radius-lg);
             width: 100%;
             box-shadow: var(--shadow-sm);
-            box-sizing: border-box;
-            border: 1px solid var(--cor-borda);
-            margin-bottom: 12px;
-        }
-
-        .brand-logo {
-            width: 35px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid var(--cor-principal);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 16px;
         }
 
         .brand-header h1 {
             margin: 0;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--cor-texto);
             letter-spacing: -0.5px;
         }
 
-        @media(min-width: 950px) {
-            .brand-header { gap: 16px; padding: 16px 28px; margin-bottom: 20px; }
-            .brand-logo { width: 45px; height: 45px; }
-            .brand-header h1 { font-size: 20px; }
-        }
-
+        /* Navegação Mobile Inferior Otimizada */
         .mobile-tabs-nav {
             display: flex;
             justify-content: space-around;
             position: fixed;
             bottom: 0; left: 0; width: 100%;
             background: #ffffff;
-            border-top: 1px solid var(--cor-borda);
-            padding: 10px 0;
+            border-top: 1px solid #e2e8f0;
+            padding: 12px 0 cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 999;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
         }
 
         .tab-btn {
             background: none; border: none; font-size: 11px; font-weight: 700;
             color: var(--cor-texto-secundario); display: flex; flex-direction: column;
-            align-items: center; gap: 4px; cursor: pointer; position: relative; width: 25%;
+            align-items: center; gap: 6px; cursor: pointer; position: relative; width: 25%;
+            transition: var(--transition);
         }
 
-        .tab-btn.active { color: var(--cor-principal); }
+        .tab-btn font {
+            font-size: 20px;
+        }
+
+        .tab-btn.active { color: var(--cor-principal); transform: translateY(-2px); }
         
         .badge-carrinho {
-            position: absolute; top: -6px; right: 22%;
+            position: absolute; top: -4px; right: 24%;
             background: var(--cor-principal); color: white;
-            font-size: 10px; font-weight: bold; border-radius: 10px;
-            padding: 1px 6px; display: none;
+            font-size: 10px; font-weight: bold; border-radius: 12px;
+            padding: 2px 7px; display: none;
         }
 
         @media(min-width: 950px) {
@@ -148,7 +142,6 @@
             grid-template-columns: 1fr;
             gap: 16px;
             width: 100%;
-            box-sizing: border-box;
         }
 
         @media(max-width: 949px) {
@@ -157,55 +150,45 @@
         }
 
         @media(min-width: 950px) {
-            .main-grid { grid-template-columns: 1.35fr 1fr; gap: 20px; }
-            .full-width-grid { grid-column: span 2; }
+            .main-grid { grid-template-columns: 1.3fr 1fr; gap: 24px; }
             .main-grid > .card { display: block !important; }
         }
 
         .card {
             background-color: var(--cor-card);
-            padding: 16px;
+            padding: 20px;
             border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--cor-borda);
-            box-sizing: border-box;
-        }
-
-        @media(min-width: 768px) {
-            .card { padding: 24px; }
-        }
-
-        .card.card-fechamento-compacto {
-            padding: 15px 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #e2e8f0;
         }
 
         h3 {
-            margin: 0 0 16px 0;
+            margin: 0 0 20px 0;
             color: var(--cor-texto);
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 8px;
-            border-bottom: 1px solid var(--cor-borda);
-            padding-bottom: 8px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 12px;
         }
 
         .secao-titulo {
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.7px;
             color: var(--cor-principal);
-            margin: 14px 0 8px 0;
-            font-weight: 700;
+            margin: 18px 0 10px 0;
+            font-weight: 800;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 12px;
+            gap: 14px;
         }
 
         @media(min-width: 480px) {
@@ -213,22 +196,21 @@
             .form-row.tres-campos { grid-template-columns: 1fr 1fr 1fr; }
         }
 
-        .form-group { margin-bottom: 10px; }
+        .form-group { margin-bottom: 12px; }
 
         label {
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             font-weight: 600;
             color: var(--cor-texto);
-            font-size: 12px;
+            font-size: 13px;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 12px; 
-            border: 1px solid #cbd5e1;
+            padding: 14px; 
+            border: 1px solid var(--cor-borda);
             border-radius: var(--border-radius-md);
-            box-sizing: border-box;
             font-size: 16px; 
             font-family: inherit;
             background-color: #fff;
@@ -236,22 +218,18 @@
             transition: var(--transition);
         }
 
-        @media(min-width: 950px) {
-            input, select, textarea { font-size: 14px; padding: 10px 12px; }
-        }
-
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--cor-principal);
-            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+            box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.12);
         }
 
-        textarea { resize: vertical; height: 55px; }
+        textarea { resize: vertical; height: 70px; }
 
         .btn {
             border: none;
-            padding: 14px 20px;
-            font-size: 14px;
+            padding: 16px 24px;
+            font-size: 15px;
             border-radius: var(--border-radius-md);
             cursor: pointer;
             font-weight: 700;
@@ -259,67 +237,92 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             width: 100%;
         }
 
         @media(min-width: 950px) {
-            .btn { width: auto; padding: 10px 20px; }
+            .btn { width: auto; }
         }
 
-        .btn-add { background-color: var(--cor-principal); color: white; margin-top: 10px; }
+        .btn-add { background-color: var(--cor-principal); color: white; margin-top: 12px; }
         .btn-add:hover { background-color: var(--cor-principal-hover); }
 
-        .btn-print { background-color: #16a34a; color: white; font-size: 15px; }
+        .btn-print { background-color: #16a34a; color: white; font-size: 16px; }
         .btn-print:hover { background-color: #15803d; }
 
-        .btn-reprint { background-color: #2563eb; color: white; padding: 8px 12px; font-size: 11px; border-radius: 6px; font-weight: bold; border: none; width: auto; }
+        .btn-reprint { background-color: #2563eb; color: white; padding: 10px 16px; font-size: 13px; border-radius: 8px; font-weight: bold; border: none; width: 100%; }
 
-        .btn-fechamento { background-color: #475569; color: white; width: 100%; }
+        .btn-fechamento { background-color: #475569; color: white; }
         .btn-fechamento:hover { background-color: #334155; }
 
-        .btn-pdf { background-color: #2563eb; color: white; display: none; width: 100%; }
-        .btn-pdf:hover { background-color: #1d4ed8; }
+        .btn-pdf { background-color: #2563eb; color: white; display: none; }
+        .btn-reset { background-color: #dc2626; color: white; display: none; }
 
-        .btn-reset { background-color: #dc2626; color: white; display: none; width: 100%; }
-        .btn-reset:hover { background-color: #b91c1c; }
-
-        @media(min-width: 480px) {
-            .container-botoes-fechamento { display: flex; gap: 10px; width: 100%; justify-content: flex-end; }
-            .card-fechamento-compacto .btn { width: auto; }
+        @media(max-width: 480px) {
+            .container-botoes-fechamento { display: flex; flex-direction: column; gap: 10px; }
+        }
+        @media(min-width: 481px) {
+            .container-botoes-fechamento { display: flex; gap: 12px; justify-content: flex-end; }
         }
 
         .carrinho-container { display: flex; flex-direction: column; justify-content: space-between; background: #f8fafc; }
 
-        .lista-itens { list-style: none; padding: 0; margin: 0; max-height: 260px; overflow-y: auto; }
+        .lista-itens { list-style: none; padding: 0; margin: 0; max-height: 340px; overflow-y: auto; }
 
         .item-carrinho {
-            background: white; padding: 12px; margin-bottom: 8px;
-            border-radius: var(--border-radius-md); font-size: 13px; display: flex;
-            justify-content: space-between; align-items: center; border: 1px solid var(--cor-borda);
+            background: white; padding: 16px; margin-bottom: 10px;
+            border-radius: var(--border-radius-md); font-size: 14px; display: flex;
+            justify-content: space-between; align-items: center; border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-sm);
         }
 
         .btn-del {
             background: #fee2e2; color: #ef4444; border: none; border-radius: 50%;
-            width: 24px; height: 24px; font-weight: bold; cursor: pointer; display: flex;
-            align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0;
+            width: 32px; height: 32px; font-weight: bold; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;
         }
 
-        .total-tela { font-size: 22px; font-weight: 800; text-align: right; margin-top: 14px; padding-top: 14px; border-top: 2px dashed #cbd5e0; }
+        .total-tela { font-size: 24px; font-weight: 800; text-align: right; margin-top: 18px; padding-top: 18px; border-top: 2px dashed #cbd5e1; }
         .total-tela span { color: var(--cor-principal); }
 
-        .tabela-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--border-radius-md); border: 1px solid var(--cor-borda); }
-        .tabela-comercial { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 650px; }
-        .tabela-comercial th, .tabela-comercial td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--cor-borda); vertical-align: top; }
-        .tabela-comercial th { background-color: #f8fafc; color: #475569; font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+        /* Estilização Responsiva das Listas e Tabelas para Celular */
+        .tabela-wrapper { width: 100%; border-radius: var(--border-radius-md); }
+        
+        @media (max-width: 650px) {
+            .tabela-comercial { display: block; }
+            .tabela-comercial thead { display: none; }
+            .tabela-comercial tbody { display: block; width: 100%; }
+            .tabela-comercial tr { 
+                display: block; background: #fff; border: 1px solid #e2e8f0; 
+                padding: 16px; border-radius: var(--border-radius-md); margin-bottom: 12px;
+                box-shadow: var(--shadow-sm);
+            }
+            .tabela-comercial td { 
+                display: flex; justify-content: space-between; padding: 6px 0; 
+                border: none !important; font-size: 14px; text-align: right !important;
+            }
+            .tabela-comercial td::before { 
+                content: attr(data-label); font-weight: 700; color: var(--cor-texto-secundario); 
+                text-align: left; margin-right: 15px; font-size: 13px; text-transform: uppercase;
+            }
+            .tabela-comercial td:last-child { display: block; padding-top: 10px; }
+        }
 
-        .dash-container-tela { display: none; grid-template-columns: 1fr; gap: 16px; margin-top: 15px; padding: 12px; background: #f8fafc; border: 1px solid var(--cor-borda); border-radius: var(--border-radius-lg); }
-        @media(min-width: 650px) { .dash-container-tela { grid-template-columns: 1fr 1fr; padding: 15px; } .dash-full { grid-column: span 2; } }
-        .bloco-metricas-caixa { display: flex; flex-direction: column; gap: 10px; }
-        .card-metrica { background: #fff; border: 1px solid var(--cor-borda); padding: 14px; border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm); }
-        .card-metrica h4 { margin: 0; color: var(--cor-texto-secundario); font-size: 11px; text-transform: uppercase; }
-        .card-metrica p { margin: 4px 0 0 0; font-size: 20px; font-weight: bold; color: var(--cor-texto); }
-        .bloco-grafico-caixa { background: #fff; border: 1px solid var(--cor-borda); padding: 14px; border-radius: var(--border-radius-md); display: flex; justify-content: center; align-items: center; min-height: 220px; max-height: 260px; box-shadow: var(--shadow-sm); }
+        @media (min-width: 651px) {
+            .tabela-wrapper { border: 1px solid #e2e8f0; overflow-x: auto; }
+            .tabela-comercial { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 700px; }
+            .tabela-comercial th, .tabela-comercial td { padding: 14px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+            .tabela-comercial th { background-color: #f1f5f9; color: #475569; font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+        }
+
+        .dash-container-tela { display: none; grid-template-columns: 1fr; gap: 16px; margin-top: 20px; padding: 16px; background: #f1f5f9; border-radius: var(--border-radius-lg); }
+        @media(min-width: 650px) { .dash-container-tela { grid-template-columns: 1fr 1fr; } .dash-full { grid-column: span 2; } }
+        .bloco-metricas-caixa { display: flex; flex-direction: column; gap: 12px; }
+        .card-metrica { background: #fff; padding: 16px; border-radius: var(--border-radius-md); box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; }
+        .card-metrica h4 { margin: 0; color: var(--cor-texto-secundario); font-size: 12px; text-transform: uppercase; }
+        .card-metrica p { margin: 6px 0 0 0; font-size: 22px; font-weight: bold; color: var(--cor-texto); }
+        .bloco-grafico-caixa { background: #fff; padding: 16px; border-radius: var(--border-radius-md); display: flex; justify-content: center; align-items: center; min-height: 240px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; }
 
         @media print {
             @page { size: 58mm auto; margin: 0mm; }
@@ -347,16 +350,16 @@
     <div id="tela-login" class="no-print">
         <div class="card-login">
             <h2 style="color: var(--cor-principal); margin: 0 0 6px 0; text-transform: uppercase; font-size: 18px; font-weight: 800; letter-spacing: 0.5px;">Painel Restrito</h2>
-            <p style="font-size: 13px; color: var(--cor-texto-secundario); margin: 0 0 24px 0;">Almoxarifado & Controle de Estoque</p>
+            <p style="font-size: 14px; color: var(--cor-texto-secundario); margin: 0 0 24px 0;">Almoxarifado & Controle de Estoque</p>
             
             <form id="form-login-id" onsubmit="validarAcessoSecure(event)">
                 <div class="form-group" style="text-align: left;">
                     <label>Operador / Usuário:</label>
-                    <input type="text" id="login-usuario" required placeholder="Digite o usuário">
+                    <input type="text" id="login-usuario" required placeholder="Digite o usuário" autocomplete="username">
                 </div>
                 <div class="form-group" style="text-align: left; margin-bottom: 24px;">
                     <label>Senha de Acesso:</label>
-                    <input type="password" id="login-senha" required placeholder="•••••">
+                    <input type="password" id="login-senha" required placeholder="•••••" autocomplete="current-password">
                 </div>
                 <button type="submit" class="btn btn-add">🔓 Confirmar Identidade</button>
             </form>
@@ -364,18 +367,17 @@
     </div>
 
     <nav class="mobile-tabs-nav no-print" id="navegacao-abas-id">
-        <button class="tab-btn active" onclick="alternarAbaMobile('venda', this)">📝 <span>Bipar</span></button>
+        <button class="tab-btn active" onclick="alternarAbaMobile('venda', this)"><font>📝</font><span>Bipar</span></button>
         <button class="tab-btn" onclick="alternarAbaMobile('carrinho', this)">
-            🛒 <span>Sessão</span>
+            <font>🛒</font><span>Sessão</span>
             <span class="badge-carrinho" id="badge-contador-id">0</span>
         </button>
-        <button class="tab-btn" onclick="alternarAbaMobile('fechamento', this)">🔒 <span>Balanço</span></button>
-        <button class="tab-btn" onclick="alternarAbaMobile('logs', this)">📋 <span>Histórico</span></button>
+        <button class="tab-btn" onclick="alternarAbaMobile('fechamento', this)"><font>🔒</font><span>Balanço</span></button>
+        <button class="tab-btn" onclick="alternarAbaMobile('logs', this)"><font>📋</font><span>Histórico</span></button>
     </nav>
 
     <div id="conteudo-sistema">
         <div class="brand-header no-print">
-            <img src="logo.png" alt="Logo" class="brand-logo" onerror="this.style.display='none'">
             <h1>KS Cortes — Controle de Almoxarifado</h1>
         </div>
 
@@ -387,11 +389,12 @@
                     <div class="form-row dois-campos">
                         <div class="form-group">
                             <label>Bipar Código EAN:</label>
-                            <input type="text" id="produto-ean" oninput="buscarProdutoPorEAN(this.value)" placeholder="789..." required autofocus>
+                            <!-- inputmode e pattern configurados para leitores físicos externos no mobile -->
+                            <input type="text" id="produto-ean" oninput="buscarProdutoPorEAN(this.value)" placeholder="789..." inputmode="text" pattern="[0-9]*" required autofocus>
                         </div>
                         <div class="form-group">
                             <label>Descrição do Material:</label>
-                            <input type="text" id="produto-descricao-tela" placeholder="Selecione ou bipe o produto..." readonly style="background-color: #f1f5f9;">
+                            <input type="text" id="produto-descricao-tela" placeholder="Aguardando bipe..." readonly style="background-color: #f1f5f9; font-weight: 600;">
                         </div>
                     </div>
 
@@ -400,8 +403,8 @@
                         <div class="form-group">
                             <label>Tipo de Fluxo:</label>
                             <select id="tipo-movimentacao" required>
-                                <option value="SAÍDA">📉 SAÍDA (Consumo Fábrica)</option>
-                                <option value="ENTRADA">📈 ENTRADA (Carga/Sobras)</option>
+                                <option value="SAÍDA"> McKinley 📉 SAÍDA (Consumo Fábrica)</option>
+                                <option value="ENTRADA"> Carga 📈 ENTRADA (Reposição/Sobra)</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -409,14 +412,14 @@
                             <input type="number" id="valor" step="0.01" min="0" placeholder="0,00" required>
                         </div>
                         <div class="form-group">
-                            <label>Quantidade Volumétrica:</label>
+                            <label>Quantidade:</label>
                             <input type="number" id="quantidade" min="1" value="1" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label>Destinação / Ordem de Serviço (O.S) / Observações:</label>
-                        <textarea id="descricao" placeholder="Ex: OS #2504 - Cozinha Planejada Bloco A, Sobra de corte limpa..."></textarea>
+                        <textarea id="descricao" placeholder="Ex: OS #2504 - Armário Cozinha, Sobra tratada..."></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-add">＋ Inserir no Lote Atual</button>
@@ -434,10 +437,10 @@
 
             <div class="card card-fechamento-compacto" id="card-aba-fechamento">
                 <h3>🔒 Fechamento Consolidado de Insumos</h3>
-                <div class="container-botoes-fechamento" style="display: flex; flex-direction: column; gap: 8px;">
+                <div class="container-botoes-fechamento">
                     <button type="button" class="btn btn-fechamento" onclick="calcularFechamentoDiario()">🔒 Processar Balanço do Turno</button>
-                    <button type="button" id="btn-pdf-id" class="btn btn-pdf" onclick="exportarFechamentoPDF()">📥 Exportar Relatório Técnico PDF (A4)</button>
-                    <button type="button" id="btn-reset-id" class="btn btn-reset" onclick="reiniciarTurnoComSenha()">⚠️ Reiniciar Turno (Zerar Métricas)</button>
+                    <button type="button" id="btn-pdf-id" class="btn btn-pdf btn" onclick="exportarFechamentoPDF()">📥 Exportar PDF (A4)</button>
+                    <button type="button" id="btn-reset-id" class="btn btn-reset btn" onclick="reiniciarTurnoComSenha()">⚠️ Zerar Métricas</button>
                 </div>
                 
                 <div id="dashboard-vendas-tela" class="dash-container-tela">
@@ -458,25 +461,25 @@
                     <div class="bloco-grafico-caixa">
                         <canvas id="graficoPizzaFechamento"></canvas>
                     </div>
-                    <div class="dash-full" id="linha-fechamento-vendedor" style="text-align:center; padding: 10px; font-weight: bold; background: #e2e8f0; color: #1e293b; font-size: 13px; border-radius: var(--border-radius-md);">
+                    <div class="dash-full" id="linha-fechamento-vendedor" style="text-align:center; padding: 12px; font-weight: bold; background: #e2e8f0; color: #1e293b; font-size: 13px; border-radius: var(--border-radius-md); line-height: 1.4;">
                         🎯 Aguardando processamento técnico...
                     </div>
                 </div>
             </div>
 
             <div class="card" id="card-aba-logs">
-                <h3>📋 Histórico Analítico de Movimentações (Real-time Cloud)</h3>
+                <h3>📋 Histórico Analítico de Movimentações</h3>
                 <div class="tabela-wrapper">
                     <table class="tabela-comercial">
                         <thead>
                             <tr>
-                                <th style="width: 8%;">Nº Lote</th>
-                                <th style="width: 10%;">Hora</th>
-                                <th style="width: 25%;">Operador / Observação</th>
-                                <th style="width: 30%;">Materiais Movimentados</th>
-                                <th style="width: 12%;">Fluxo</th>
-                                <th style="width: 10%;">Custo Total</th>
-                                <th style="width: 5%; text-align: center;">Ações</th>
+                                <th>Nº Lote</th>
+                                <th>Hora</th>
+                                <th>Operador / Obs</th>
+                                <th>Materiais Movimentados</th>
+                                <th>Fluxo</th>
+                                <th>Custo Total</th>
+                                <th style="text-align: center;">Ações</th>
                             </tr>
                         </thead>
                         <tbody id="corpo-historico"></tbody>
@@ -492,7 +495,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc, query, orderBy, Timestamp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
-        // CONFIGURAÇÃO DO SEU BANCO DE DADOS (KSCORTES)
         const firebaseConfig = {
             apiKey: "AIzaSyBxoPGVoNl01VR8c7pphJ1VuY35CadvrPg",
             authDomain: "kscortes-4f246.firebaseapp.com",
@@ -514,7 +516,6 @@
         let horarioCorteTurno = 0; 
         let operadorLogado = "Almoxarife";
 
-        // Matriz Base de Itens do Almoxarifado de MDF vinculados por EAN
         const bancoProdutosEAN = {
             "7891234567890": { descricao: "Fita de Borda Louro Freijó 22mm", custo: 15.50 },
             "7891234567891": { descricao: "Cola de Contato Brascoplast 2.8kg", custo: 89.90 },
@@ -575,7 +576,7 @@
             event.preventDefault();
             const usuarioInput = document.getElementById('login-usuario').value.trim();
             const senhaInput = document.getElementById('login-senha').value.trim();
-            const hashValido = "MTczOQ=="; // Senha "1739" em Base64
+            const hashValido = "MTczOQ==";
 
             if (usuarioInput.toLowerCase() === "kleber" && btoa(senhaInput) === hashValido) {
                 operadorLogado = usuarioInput;
@@ -613,23 +614,22 @@
                             maiorNumeroTurnoAtual = dados.numeroLote;
                         }
 
-                        let resumoItens = dados.itens.map(i => {
-                            return `<span style="color:var(--cor-principal); font-weight:600;">(${i.qtd}x)</span> ${i.descricao}`;
-                        }).join('<br>');
+                        let resumoItens = dados.itens.map(i => `(${i.qtd}x) ${i.descricao}`).join('<br>');
                         
                         let badgeFluxo = dados.fluxo === "SAÍDA" ? 
                             `<span style="font-size:11px; font-weight:700; padding:4px 8px; background:#fee2e2; border-radius:6px; color:#dc2626;">📉 SAÍDA</span>` :
                             `<span style="font-size:11px; font-weight:700; padding:4px 8px; background:#dcfce7; border-radius:6px; color:#16a34a;">📈 ENTRADA</span>`;
 
+                        // data-label injetado para a montagem de lista responsiva CSS no Mobile
                         corpoHistorico.innerHTML += `
                             <tr>
-                                <td><strong style="color:var(--cor-principal)">#${String(dados.numeroLote).padStart(2, '0')}</strong></td>
-                                <td>${dados.hora || '00:00'}</td>
-                                <td><strong>${dados.operador}</strong><br><small style="color:#64748b;">${dados.obsGeral}</small></td>
-                                <td>${resumoItens}</td>
-                                <td>${badgeFluxo}</td>
-                                <td><strong>R$ ${parseFloat(dados.totalCusto || 0).toFixed(2)}</strong></td>
-                                <td style="text-align:center;"><button class="btn-reprint" onclick="reimprimirTicketPorId('${doc.id}')">🖨️ Ver</button></td>
+                                <td data-label="Nº Lote"><strong style="color:var(--cor-principal)">#${String(dados.numeroLote).padStart(2, '0')}</strong></td>
+                                <td data-label="Hora">${dados.hora || '00:00'}</td>
+                                <td data-label="Operador / Obs"><strong>${dados.operador}</strong><br><small style="color:#64748b;">${dados.obsGeral}</small></td>
+                                <td data-label="Materiais">${resumoItens}</td>
+                                <td data-label="Fluxo">${badgeFluxo}</td>
+                                <td data-label="Custo Total"><strong>R$ ${parseFloat(dados.totalCusto || 0).toFixed(2)}</strong></td>
+                                <td><button class="btn-reprint" onclick="reimprimirTicketPorId('${doc.id}')">🖨️ Ver Via</button></td>
                             </tr>
                         `;
                     }
@@ -672,7 +672,7 @@
                         <strong>MOTIVO/OS:</strong> ${pedido.obsGeral}
                     </div>
                     <div class="ticket-divider">================================</div>
-                    <div style="font-weight: bold; font-size: 10px; margin-bottom: 2px; text-transform: uppercase;">MATERIAIS REGISTRADOS:</div>
+                    <div style="font-weight: bold; font-size: 10px; margin-bottom: 2px; text-transform: uppercase;">MATERIAIS:</div>
                     <div>${linesProdutosHtml}</div>
                     <div class="ticket-divider">--------------------------------</div>
                     <div class="ticket-total-container">
@@ -758,9 +758,9 @@
                     <li class="item-carrinho">
                         <div style="padding-right: 8px;">
                             <strong>${item.qtd}x - ${item.descricao}</strong><br>
-                            <small style="color: var(--cor-texto-secundario)">EAN: ${item.ean} | Custo: R$ ${item.valor.toFixed(2)} | Fluxo: ${item.fluxo}</small>
+                            <small style="color: var(--cor-texto-secundario)">EAN: ${item.ean} | Custo: R$ ${item.valor.toFixed(2)} | Regra: ${item.fluxo}</small>
                         </div>
-                        <button class="btn-del" onclick="removerItem(${item.id})">X</button>
+                        <button class="btn-del" onclick="removerItem(${item.id})">×</button>
                     </li>
                 `;
             });
@@ -888,7 +888,7 @@
                 pedidos: historicoGeralPedidos.length + ` lotes operados (${volumeItensMovimentados} insumos movimentados)`,
                 ticket: 'R$ ' + ticketMedioLotes.toFixed(2),
                 porCategoria: performancePorItem,
-                porPagamento: { "Total Entradas (Reposição)": totalEntradasMonetario, "Total Saídas (Fábrica)": totalSaidasMonetario }
+                porPagamento: { "Total Entradas": totalEntradasMonetario, "Total Saídas": totalSaidasMonetario }
             };
 
             const ctxPizza = document.getElementById('graficoPizzaFechamento').getContext('2d');
@@ -910,7 +910,7 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'right', labels: { boxWidth: 10, font: { size: 9 } } }
+                        legend: { position: window.innerWidth > 500 ? 'right' : 'bottom', labels: { boxWidth: 10, font: { size: 9 } } }
                     }
                 }
             });
