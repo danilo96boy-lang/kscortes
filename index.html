@@ -99,7 +99,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* Navegação Mobile Inferior Otimizada */
         .mobile-tabs-nav {
             display: flex;
             justify-content: space-around;
@@ -313,7 +312,6 @@
             .no-print { display: none !important; }
             body { background: #fff; padding: 0; margin: 0; color: #000; }
             
-            /* Todos os fluxos agora imprimem em folha A4 em 2 Vias (Metade / Metade) */
             body.modo-impressao-os-a4 { display: block; width: 210mm; height: 297mm; font-family: Arial, sans-serif; }
             body.modo-impressao-os-a4 #os-a4-print { display: block !important; }
             .os-via-a4 { height: 143mm; max-height: 143mm; box-sizing: border-box; padding: 10mm; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
@@ -379,12 +377,12 @@
                     <div class="secao-titulo">1. Código de Barras (EAN)</div>
                     <div class="form-row dois-campos">
                         <div class="form-group">
-                            <label>Bipar Código EAN:</label>
-                            <input type="text" id="produto-ean" oninput="buscarProdutoPorEAN(this.value)" placeholder="789..." inputmode="text" pattern="[0-9]*" required autofocus>
+                            <label>EAN (Digite ou Bipe):</label>
+                            <input type="text" id="produto-ean" onkeyup="buscarProdutoPorEAN(this.value)" oninput="buscarProdutoPorEAN(this.value)" placeholder="Digite ou bipe o EAN..." required autofocus>
                         </div>
                         <div class="form-group">
                             <label>Descrição do Material:</label>
-                            <input type="text" id="produto-descricao-tela" placeholder="Aguardando bipe..." readonly style="background-color: #f1f5f9; font-weight: 600;">
+                            <input type="text" id="produto-descricao-tela" placeholder="Aguardando código..." readonly style="background-color: #f1f5f9; font-weight: 600;">
                         </div>
                     </div>
 
@@ -393,8 +391,8 @@
                         <div class="form-group">
                             <label>Tipo de Fluxo:</label>
                             <select id="tipo-movimentacao" required>
-                                <option value="SAÍDA">📉 SAÍDA DE MATERIAL (Consumo Fábrica)</option>
-                                <option value="ENTRADA">📈 ENTRADA DE MATERIAL (Reposição/Sobra)</option>
+                                <option value="SAÍDA"> McKinley 📉 SAÍDA DE MATERIAL (Consumo Fábrica)</option>
+                                <option value="ENTRADA"> Carga 📈 ENTRADA DE MATERIAL (Reposição/Sobra)</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -729,7 +727,7 @@
             const fluxo = document.getElementById('tipo-movimentacao').value;
 
             if(!descricaoMaterial) {
-                alert("Por favor, certifique-se de que o EAN bípado está cadastrado.");
+                alert("Por favor, certifique-se de que o EAN inserido está cadastrado na base.");
                 return;
             }
 
