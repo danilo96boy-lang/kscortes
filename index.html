@@ -307,30 +307,13 @@
         .card-metrica p { margin: 6px 0 0 0; font-size: 22px; font-weight: bold; color: var(--cor-texto); }
         .bloco-grafico-caixa { background: #fff; padding: 16px; border-radius: var(--border-radius-md); display: flex; justify-content: center; align-items: center; min-height: 240px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; }
 
-        #ticket-print, #os-a4-print { display: none; }
+        #os-a4-print { display: none; }
 
         @media print {
             .no-print { display: none !important; }
             body { background: #fff; padding: 0; margin: 0; color: #000; }
             
-            /* Cenário A: Impressão de Cupom Térmico (Entradas) */
-            body.modo-impressao-ticket { display: block; width: 58mm; }
-            body.modo-impressao-ticket #ticket-print { display: block !important; font-family: 'Courier New', Courier, monospace; width: 48mm; max-width: 48mm; padding: 1mm 0.5mm; margin: 0; font-size: 11px; line-height: 1.25; word-wrap: break-word; }
-            .ticket-header { text-align: center; margin-bottom: 2px; }
-            .ticket-via-tag { font-size: 12px; font-weight: bold; border: 1px solid #000; display: inline-block; padding: 2px 4px; margin-bottom: 3px; text-transform: uppercase; }
-            .ticket-header-title { font-size: 13px; font-weight: bold; letter-spacing: 0.5px; }
-            .ticket-header-num-destaque { font-size: 24px !important; font-weight: 950 !important; margin: 6px 0 !important; text-align: center !important; display: block !important; width: 100% !important; }
-            .ticket-divider { text-align: center; margin: 2px 0; font-weight: bold; font-size: 11px; }
-            .ticket-client-info { font-size: 10.5px; margin-bottom: 2px; line-height: 1.2; }
-            .ticket-item { margin: 6px 0; page-break-inside: avoid; border-bottom: 1px dotted #ccc; padding-bottom: 4px; }
-            .ticket-item-main { width: 100%; display: block; text-align: left; }
-            .ticket-item-name { display: block; font-weight: bold; font-size: 11px; }
-            .ticket-item-price { display: block; text-align: right; font-weight: bold; margin-top: 1px; }
-            .ticket-item-obs { font-size: 10px; font-style: italic; display: block; }
-            .ticket-total-container { font-size: 13px; font-weight: bold; display: flex; justify-content: space-between; margin-top: 4px; }
-            .ticket-wrapper-via { page-break-after: always !important; display: block; }
-
-            /* Cenário B: Impressão de O.S. A4 Meio a Meio (Saídas) */
+            /* Todos os fluxos agora imprimem em folha A4 em 2 Vias (Metade / Metade) */
             body.modo-impressao-os-a4 { display: block; width: 210mm; height: 297mm; font-family: Arial, sans-serif; }
             body.modo-impressao-os-a4 #os-a4-print { display: block !important; }
             .os-via-a4 { height: 143mm; max-height: 143mm; box-sizing: border-box; padding: 10mm; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
@@ -410,8 +393,8 @@
                         <div class="form-group">
                             <label>Tipo de Fluxo:</label>
                             <select id="tipo-movimentacao" required>
-                                <option value="SAÍDA"> McKinley 📉 SAÍDA (Gera O.S. A4)</option>
-                                <option value="ENTRADA"> Carga 📈 ENTRADA (Gera Cupom 58mm)</option>
+                                <option value="SAÍDA">📉 SAÍDA DE MATERIAL (Consumo Fábrica)</option>
+                                <option value="ENTRADA">📈 ENTRADA DE MATERIAL (Reposição/Sobra)</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -438,7 +421,7 @@
                 <ul id="lista-itens" class="lista-itens"></ul>
                 <div>
                     <div class="total-tela">Custo Total do Lote: <span>R$ <span id="total-valor">0.00</span></span></div>
-                    <button type="button" class="btn btn-print" style="margin-top: 15px;" onclick="finalizarEImprimirTicket()">🖨️ Salvar Lote & Imprimir Comprovante</button>
+                    <button type="button" class="btn btn-print" style="margin-top: 15px;" onclick="finalizarEImprimirTicket()">🖨️ Salvar Lote & Imprimir Folha A4</button>
                 </div>
             </div>
 
@@ -496,7 +479,6 @@
         </div>
     </div>
 
-    <div id="ticket-print"></div>
     <div id="os-a4-print"></div>
 
     <script type="module">
@@ -584,7 +566,7 @@
             event.preventDefault();
             const usuarioInput = document.getElementById('login-usuario').value.trim();
             const senhaInput = document.getElementById('login-senha').value.trim();
-            const hashValido = "MTczOQ=="; // btoa("1739")
+            const hashValido = "MTczOQ=="; 
 
             if (usuarioInput.toLowerCase() === "kleber" && btoa(senhaInput) === hashValido) {
                 operadorLogado = usuarioInput;
@@ -622,7 +604,7 @@
                             maiorNumeroTurnoAtual = dados.numeroLote;
                         }
 
-                        let resumoItens = dados.itens.map(i => `(${i.qtd}x) ${i.descricao}`).join('<br>');
+                        let resumoItens = dados.itens.map(i => `安定 (${i.qtd}x) ${i.descricao}`).join('<br>');
                         
                         let badgeFluxo = dados.fluxo === "SAÍDA" ? 
                             `<span style="font-size:11px; font-weight:700; padding:4px 8px; background:#fee2e2; border-radius:6px; color:#dc2626;">📉 SAÍDA</span>` :
@@ -636,7 +618,7 @@
                                 <td data-label="Materiais">${resumoItens}</td>
                                 <td data-label="Fluxo">${badgeFluxo}</td>
                                 <td data-label="Custo Total"><strong>R$ ${parseFloat(dados.totalCusto || 0).toFixed(2)}</strong></td>
-                                <td><button class="btn-reprint" onclick="reimprimirDocumento('${doc.id}')">🖨️ Emitir</button></td>
+                                <td><button class="btn-reprint" onclick="reimprimirDocumento('${doc.id}')">🖨️ Imprimir A4</button></td>
                             </tr>
                         `;
                     }
@@ -647,51 +629,6 @@
             } catch (erro) {
                 console.error("Erro Firebase: ", erro);
             }
-        }
-
-        function gerarHtmlFitaVia(pedido, nomeVia) {
-            let linesProdutosHtml = '';
-            pedido.itens.forEach((item) => {
-                linesProdutosHtml += `
-                    <div class="ticket-item">
-                        <div class="ticket-item-main">
-                            <span class="ticket-item-name">${item.qtd}x [${item.ean}] - ${item.descricao}</span>
-                            <span class="ticket-item-price">Un: R$ ${parseFloat(item.precoUnitario).toFixed(2)}</span>
-                        </div>
-                        <div class="ticket-item-obs">${item.obsItem !== 'Sem obs' ? 'Destino: ' + item.obsItem : ''}</div>
-                    </div>
-                `;
-            });
-
-            return `
-                <div class="ticket-wrapper-via">
-                    <div class="ticket-header">
-                        <div class="ticket-via-tag">--- VIA: ${nomeVia} ---</div><br>
-                        <span class="ticket-header-title">COMPROVANTE DE ALMOXARIFADO</span>
-                        <div class="ticket-divider">--------------------------------</div>
-                        <div class="ticket-wrapper-via-num"><span class="ticket-header-num-destaque"><strong>LOTE #${String(pedido.numeroLote).padStart(2, '0')}</strong></span></div>
-                        <div class="ticket-divider">--------------------------------</div>
-                        <div style="font-size: 10px; font-weight: bold; margin-top:2px;">HORA: ${pedido.hora} | OPERADOR: ${pedido.operador}</div>
-                    </div>
-                    <div class="ticket-divider">--------------------------------</div>
-                    <div class="ticket-client-info">
-                        <strong>FLUXO:</strong> ${pedido.fluxo}<br>
-                        <strong>MOTIVO/OS:</strong> ${pedido.obsGeral}
-                    </div>
-                    <div class="ticket-divider">================================</div>
-                    <div style="font-weight: bold; font-size: 10px; margin-bottom: 2px; text-transform: uppercase;">MATERIAIS:</div>
-                    <div>${linesProdutosHtml}</div>
-                    <div class="ticket-divider">--------------------------------</div>
-                    <div class="ticket-total-container">
-                        <span>CUSTO DO LOTE:</span>
-                        <span>R$ ${parseFloat(pedido.totalCusto || 0).toFixed(2)}</span>
-                    </div>
-                    <div class="ticket-divider">================================</div>
-                    <div style="text-align:center; font-size:9.5px; font-weight:bold;">KS Cortes — Insumos</div>
-                    <div class="ticket-divider">--------------------------------</div>
-                    <br><br><br><br><br>
-                </div>
-            `;
         }
 
         function gerarHtmlOSMeioAMeio(pedido, nomeVia) {
@@ -709,22 +646,25 @@
                 `;
             });
 
+            const tituloFluxo = pedido.fluxo === "SAÍDA" ? "REQUISIÇÃO DE SAÍDA DE MATERIAL" : "REGISTRO DE ENTRADA / REPOSIÇÃO";
+            const labelAssinatura2 = pedido.fluxo === "SAÍDA" ? "Colaborador / Quem Retirou" : "Fornecedor / Transportador";
+
             return `
                 <div class="os-via-a4">
                     <table class="os-header-table">
                         <tr>
                             <td>
-                                <span class="os-header-title">KS CORTES — ORDEM DE REQUISIÇÃO DE INSUMOS</span><br>
-                                <small style="color:#475569; font-weight:bold;">Via Destinada: ${nomeVia}</small>
+                                <span class="os-header-title">KS CORTES — ${tituloFluxo}</span><br>
+                                <small style="color:#475569; font-weight:bold;">Identificação: ${nomeVia}</small>
                             </td>
-                            <td class="os-badge-numero">OS #${String(pedido.numeroLote).padStart(3, '0')}</td>
+                            <td class="os-badge-numero">LOTE #${String(pedido.numeroLote).padStart(3, '0')}</td>
                         </tr>
                     </table>
 
                     <div class="os-meta-dados">
-                        <strong>Data/Hora Emissão:</strong> ${pedido.data} | 
-                        <strong>Responsável TI/Almox:</strong> ${pedido.operador}<br>
-                        <strong>Projeto / Centro de Custo / Finalidade:</strong> ${pedido.obsGeral}
+                        <strong>Data/Hora Registro:</strong> ${pedido.data} | 
+                        <strong>Responsável Almox:</strong> ${pedido.operador}<br>
+                        <strong>Observações / Destinação / OS:</strong> ${pedido.obsGeral}
                     </div>
 
                     <table class="os-tabela-itens">
@@ -732,16 +672,16 @@
                             <tr>
                                 <th style="width:5%">Item</th>
                                 <th style="width:15%">EAN</th>
-                                <th style="width:50%">Especificação do Material</th>
+                                <th style="width:50%">Especificação do Insumo</th>
                                 <th style="width:8%">Qtd</th>
-                                <th style="width:11%">V. Unit</th>
+                                <th style="width:11%">C. Unit</th>
                                 <th style="width:11%">Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
                             ${trsItens}
                             <tr>
-                                <td colspan="5" style="text-align:right; font-weight:bold; background:#f8fafc;">VALOR TOTAL DO COMPLEMENTO:</td>
+                                <td colspan="5" style="text-align:right; font-weight:bold; background:#f8fafc;">VALOR TOTAL DO LOTE:</td>
                                 <td style="font-weight:bold; background:#f8fafc; color:#1e293b;">R$ ${parseFloat(pedido.totalCusto).toFixed(2)}</td>
                             </tr>
                         </tbody>
@@ -750,11 +690,11 @@
                     <div class="os-bloco-assinaturas">
                         <div class="os-campo-assinatura">
                             <div class="os-linha-assinatura"></div>
-                            <span>Almoxarifado / Responsável Entrega</span>
+                            <span>Responsável Almoxarifado</span>
                         </div>
                         <div class="os-campo-assinatura">
                             <div class="os-linha-assinatura"></div>
-                            <span>Colaborador / Quem Retirou</span>
+                            <span>${labelAssinatura2}</span>
                         </div>
                     </div>
                 </div>
@@ -768,20 +708,14 @@
                 return;
             }
 
-            if (pedidoMestre.fluxo === "SAÍDA") {
-                const containerOS = document.getElementById('os-a4-print');
-                containerOS.innerHTML = `
-                    ${gerarHtmlOSMeioAMeio(pedidoMestre, "COMPROVANTE DE PROCESSO")}
-                    <div class="os-linha-corte"><span>Recorte aqui — KS Cortes</span></div>
-                    ${gerarHtmlOSMeioAMeio(pedidoMestre, "VIA ARQUIVO ALMOXARIFADO")}
-                `;
-                document.body.className = "modo-impressao-os-a4";
-            } else {
-                const containerFita = document.getElementById('ticket-print');
-                containerFita.innerHTML = gerarHtmlFitaVia(pedidoMestre, "ARQUIVO") + gerarHtmlFitaVia(pedidoMestre, "PRODUÇÃO");
-                document.body.className = "modo-impressao-ticket";
-            }
-
+            const containerOS = document.getElementById('os-a4-print');
+            containerOS.innerHTML = `
+                ${gerarHtmlOSMeioAMeio(pedidoMestre, "VIA DE PROCESSO FÁBRICA")}
+                <div class="os-linha-corte"><span>Recorte Analítico — KS Cortes</span></div>
+                ${gerarHtmlOSMeioAMeio(pedidoMestre, "VIA ARQUIVO ALMOXARIFADO")}
+            `;
+            
+            document.body.className = "modo-impressao-os-a4";
             window.print();
         };
 
@@ -842,7 +776,7 @@
                     <li class="item-carrinho">
                         <div style="padding-right: 8px;">
                             <strong>${item.qtd}x - ${item.descricao}</strong><br>
-                            <small style="color: var(--cor-texto-secundario)">EAN: ${item.ean} | Custo: R$ ${item.valor.toFixed(2)} | Regra: ${item.fluxo}</small>
+                            <small style="color: var(--cor-texto-secundario)">EAN: ${item.ean} | Custo: R$ ${item.valor.toFixed(2)} | Fluxo: ${item.fluxo}</small>
                         </div>
                         <button class="btn-del" onclick="removerItem(${item.id})">×</button>
                     </li>
@@ -865,7 +799,7 @@
                 return;
             }
 
-            const obsGeralLote = prompt("Destinação padrão / Observação do Lote:", "Consumo Linha de Produção MDF");
+            const obsGeralLote = prompt("Finalidade / Projeto / Observação do Lote:", "Consumo Linha de Produção MDF");
             if(obsGeralLote === null) return;
 
             const fluxoPrincipal = pedidoAtual[0].fluxo;
@@ -898,19 +832,14 @@
             try {
                 await addDoc(collection(db, "pedidos"), documentoLote);
                 
-                if (fluxoPrincipal === "SAÍDA") {
-                    const containerOS = document.getElementById('os-a4-print');
-                    containerOS.innerHTML = `
-                        ${gerarHtmlOSMeioAMeio(documentoLote, "COMPROVANTE DE PROCESSO")}
-                        <div class="os-linha-corte"><span>Recorte aqui — KS Cortes</span></div>
-                        ${gerarHtmlOSMeioAMeio(documentoLote, "VIA ARQUIVO ALMOXARIFADO")}
-                    `;
-                    document.body.className = "modo-impressao-os-a4";
-                } else {
-                    const containerFita = document.getElementById('ticket-print');
-                    containerFita.innerHTML = gerarHtmlFitaVia(documentoLote, "ARQUIVO") + gerarHtmlFitaVia(documentoLote, "PRODUÇÃO");
-                    document.body.className = "modo-impressao-ticket";
-                }
+                const containerOS = document.getElementById('os-a4-print');
+                containerOS.innerHTML = `
+                    ${gerarHtmlOSMeioAMeio(documentoLote, "VIA DE PROCESSO FÁBRICA")}
+                    <div class="os-linha-corte"><span>Recorte Analítico — KS Cortes</span></div>
+                    ${gerarHtmlOSMeioAMeio(documentoLote, "VIA ARQUIVO ALMOXARIFADO")}
+                `;
+                
+                document.body.className = "modo-impressao-os-a4";
 
                 await carregarHistoricoDoFirebase();
                 window.print();
