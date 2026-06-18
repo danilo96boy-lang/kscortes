@@ -541,7 +541,7 @@
                 txtDescricao.value = item.descricao;
                 inputValor.value = item.custo.toFixed(2);
             } else {
-                // Modificado para NÃO limpar o que o usuário digita caso ele queira registrar um item novo na hora
+                // MODIFICADO: Se o código não estiver no cadastro, não limpa os campos para deixar você escrever o que quiser
                 if(eanLimpo === "") {
                     txtDescricao.value = "";
                     inputValor.value = "";
@@ -738,7 +738,7 @@
 
             pedidoAtual.push({ 
                 id: Date.now(), 
-                ean: ean, 
+                ean: ean || "S/ COD", // Fallback caso deixem o campo código totalmente em branco
                 descricao: descricaoMaterial, 
                 obsItem: obsItem || "Sem obs", 
                 precoUnitario: precoUnitario, 
@@ -777,7 +777,7 @@
                     <li class="item-carrinho">
                         <div style="padding-right: 8px;">
                             <strong>${item.qtd}x - ${item.descricao}</strong><br>
-                            <small style="color: var(--cor-texto-secundario)">EAN: ${item.ean} | Custo: R$ ${item.valor.toFixed(2)} | Fluxo: ${item.fluxo}</small>
+                            <small style="color: var(--cor-texto-secundario)">Código: ${item.ean} | Custo: R$ ${item.valor.toFixed(2)} | Fluxo: ${item.fluxo}</small>
                         </div>
                         <button class="btn-del" onclick="removerItem(${item.id})">×</button>
                     </li>
