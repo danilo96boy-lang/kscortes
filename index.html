@@ -376,7 +376,7 @@
     <div id="conteudo-sistema">
         <div class="brand-header no-print">
             <img src="logo.png" alt="Logo" class="brand-logo" onerror="this.style.display='none'">
-            <h1>Controle de Almoxarifado — Fábrica MDF</h1>
+            <h1>KS Cortes — Controle de Almoxarifado</h1>
         </div>
 
         <div class="main-grid no-print">
@@ -492,14 +492,15 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, doc, setDoc, getDoc, query, orderBy, Timestamp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
+        // CONFIGURAÇÃO DO SEU BANCO DE DADOS (KSCORTES)
         const firebaseConfig = {
-            apiKey: "AIzaSyD1miyZUImKwCCNwbgppUjtni860Urt-z4",
-            authDomain: "tempero-3857c.firebaseapp.com",
-            projectId: "tempero-3857c",
-            storageBucket: "tempero-3857c.firebasestorage.app",
-            messagingSenderId: "696644233661",
-            appId: "1:696644233661:web:00d99dac7d8d79eecdcad4",
-            measurementId: "G-7KV67X1DD0"
+            apiKey: "AIzaSyBxoPGVoNl01VR8c7pphJ1VuY35CadvrPg",
+            authDomain: "kscortes-4f246.firebaseapp.com",
+            projectId: "kscortes-4f246",
+            storageBucket: "kscortes-4f246.firebasestorage.app",
+            messagingSenderId: "389224663805",
+            appId: "1:389224663805:web:eab86c4a2f2767475e8c94",
+            measurementId: "G-BCR5SZYV73"
         };
 
         const app = initializeApp(firebaseConfig);
@@ -574,9 +575,9 @@
             event.preventDefault();
             const usuarioInput = document.getElementById('login-usuario').value.trim();
             const senhaInput = document.getElementById('login-senha').value.trim();
-            const hashValido = "MTczOQ=="; // "1739" em Base64
+            const hashValido = "MTczOQ=="; // Senha "1739" em Base64
 
-            if (usuarioInput.toLowerCase() === "kebler" && btoa(senhaInput) === hashValido) {
+            if (usuarioInput.toLowerCase() === "kleber" && btoa(senhaInput) === hashValido) {
                 operadorLogado = usuarioInput;
                 document.getElementById('tela-login').style.display = 'none';
                 document.getElementById('conteudo-sistema').style.display = 'block';
@@ -679,7 +680,7 @@
                         <span>R$ ${parseFloat(pedido.totalCusto || 0).toFixed(2)}</span>
                     </div>
                     <div class="ticket-divider">================================</div>
-                    <div style="text-align:center; font-size:9.5px; font-weight:bold;">Almoxarifado MDF</div>
+                    <div style="text-align:center; font-size:9.5px; font-weight:bold;">KS Cortes — Insumos</div>
                     <div class="ticket-divider">--------------------------------</div>
                     <br><br><br><br><br>
                 </div>
@@ -986,7 +987,7 @@
                         <table class="header-table">
                             <tr>
                                 <td style="vertical-align:bottom;">
-                                    <h2 style="margin: 0; color: #2e7d32; font-size: 24px; text-transform: uppercase; letter-spacing: -0.5px; font-weight:800;">Almoxarifado MDF</h2>
+                                    <h2 style="margin: 0; color: #2e7d32; font-size: 24px; text-transform: uppercase; letter-spacing: -0.5px; font-weight:800;">KS Cortes</h2>
                                     <div style="font-size: 13px; font-weight: 600; color: #64748b; margin-top: 4px;">Relatório Consolidado de Fechamento de Insumos</div>
                                 </td>
                                 <td style="text-align: right; vertical-align: bottom; font-size: 11px; color: #64748b; font-weight: 600;">
@@ -1036,7 +1037,7 @@
             const targetElement = iframeDoc.body;
             const configuracoes = {
                 margin: [15, 14, 15, 14], 
-                filename: `Fechamento_Almoxarifado_MDF_${new Date().toLocaleDateString('pt-BR').replace(/\//g, '-')}.pdf`,
+                filename: `Fechamento_Almoxarifado_KS_${new Date().toLocaleDateString('pt-BR').replace(/\//g, '-')}.pdf`,
                 image: { type: 'jpeg', quality: 1.0 },
                 html2canvas: { scale: 2, logging: false, useCORS: true, letterRendering: true, width: 790 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
