@@ -120,10 +120,7 @@
             transition: var(--transition);
         }
 
-        .tab-btn font {
-            font-size: 20px;
-        }
-
+        .tab-btn font { font-size: 20px; }
         .tab-btn.active { color: var(--cor-principal); transform: translateY(-2px); }
         
         .badge-carrinho {
@@ -241,33 +238,20 @@
             width: 100%;
         }
 
-        @media(min-width: 950px) {
-            .btn { width: auto; }
-        }
+        @media(min-width: 950px) { .btn { width: auto; } }
 
         .btn-add { background-color: var(--cor-principal); color: white; margin-top: 12px; }
         .btn-add:hover { background-color: var(--cor-principal-hover); }
-
         .btn-print { background-color: #16a34a; color: white; font-size: 16px; }
-        .btn-print:hover { background-color: #15803d; }
-
         .btn-reprint { background-color: #2563eb; color: white; padding: 10px 16px; font-size: 13px; border-radius: 8px; font-weight: bold; border: none; width: 100%; }
-
         .btn-fechamento { background-color: #475569; color: white; }
-        .btn-fechamento:hover { background-color: #334155; }
-
         .btn-pdf { background-color: #2563eb; color: white; display: none; }
         .btn-reset { background-color: #dc2626; color: white; display: none; }
 
-        @media(max-width: 480px) {
-            .container-botoes-fechamento { display: flex; flex-direction: column; gap: 10px; }
-        }
-        @media(min-width: 481px) {
-            .container-botoes-fechamento { display: flex; gap: 12px; justify-content: flex-end; }
-        }
+        @media(max-width: 480px) { .container-botoes-fechamento { display: flex; flex-direction: column; gap: 10px; } }
+        @media(min-width: 481px) { .container-botoes-fechamento { display: flex; gap: 12px; justify-content: flex-end; } }
 
         .carrinho-container { display: flex; flex-direction: column; justify-content: space-between; background: #f8fafc; }
-
         .lista-itens { list-style: none; padding: 0; margin: 0; max-height: 340px; overflow-y: auto; }
 
         .item-carrinho {
@@ -286,7 +270,6 @@
         .total-tela { font-size: 24px; font-weight: 800; text-align: right; margin-top: 18px; padding-top: 18px; border-top: 2px dashed #cbd5e1; }
         .total-tela span { color: var(--cor-principal); }
 
-        /* Estilização Responsiva das Listas e Tabelas para Celular */
         .tabela-wrapper { width: 100%; border-radius: var(--border-radius-md); }
         
         @media (max-width: 650px) {
@@ -324,7 +307,6 @@
         .card-metrica p { margin: 6px 0 0 0; font-size: 22px; font-weight: bold; color: var(--cor-texto); }
         .bloco-grafico-caixa { background: #fff; padding: 16px; border-radius: var(--border-radius-md); display: flex; justify-content: center; align-items: center; min-height: 240px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; }
 
-        /* Estilos Globais para Impressão Activa */
         #ticket-print, #os-a4-print { display: none; }
 
         @media print {
@@ -352,22 +334,22 @@
             body.modo-impressao-os-a4 { display: block; width: 210mm; height: 297mm; font-family: Arial, sans-serif; }
             body.modo-impressao-os-a4 #os-a4-print { display: block !important; }
             .os-via-a4 { height: 143mm; max-height: 143mm; box-sizing: border-box; padding: 10mm; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
-            .os-linha-corte { width: 100%; height: 2px; border-bottom: 2px dashed #000; text-align: center; position: relative; }
+            .os-linha-corte { width: 100%; height: 2px; border-bottom: 2px dashed #000; text-align: center; position: relative; margin: 2mm 0; }
             .os-linha-corte span { position: absolute; top: -10px; left: 45%; background: #fff; padding: 0 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
             
-            .os-header-table { width: 100%; border-collapse: collapse; margin-bottom: 5mm; }
-            .os-header-title { font-size: 18px; font-weight: bold; color: #000; text-transform: uppercase; margin: 0; }
-            .os-badge-numero { font-size: 22px; font-weight: 900; text-align: right; }
+            .os-header-table { width: 100%; border-collapse: collapse; margin-bottom: 3mm; }
+            .os-header-title { font-size: 16px; font-weight: bold; color: #000; text-transform: uppercase; margin: 0; }
+            .os-badge-numero { font-size: 20px; font-weight: 900; text-align: right; }
             
-            .os-meta-dados { font-size: 12px; margin-bottom: 5mm; background: #f1f5f9; padding: 3mm; border-radius: 4px; border: 1px solid #cbd5e1; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .os-meta-dados { font-size: 11px; margin-bottom: 3mm; background: #f1f5f9; padding: 2mm; border-radius: 4px; border: 1px solid #cbd5e1; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             
-            .os-tabela-itens { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 4mm; }
-            .os-tabela-itens th { background: #e2e8f0; font-weight: bold; padding: 6px; border: 1px solid #94a3b8; text-align: left; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .os-tabela-itens td { padding: 6px; border: 1px solid #cbd5e1; }
+            .os-tabela-itens { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 3mm; }
+            .os-tabela-itens th { background: #e2e8f0; font-weight: bold; padding: 5px; border: 1px solid #94a3b8; text-align: left; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .os-tabela-itens td { padding: 5px; border: 1px solid #cbd5e1; }
             
-            .os-bloco-assinaturas { display: flex; justify-content: space-between; margin-top: auto; padding-top: 4mm; }
+            .os-bloco-assinaturas { display: flex; justify-content: space-between; margin-top: auto; padding-top: 2mm; }
             .os-campo-assinatura { width: 45%; text-align: center; font-size: 11px; }
-            .os-linha-assinatura { border-top: 1px solid #000; margin-bottom: 2px; margin-top: 8mm; }
+            .os-linha-assinatura { border-top: 1px solid #000; margin-bottom: 2px; margin-top: 6mm; }
         }
     </style>
 </head>
@@ -539,4 +521,568 @@
         let contadorPedidos = 1;
         let dadosFechamentoRelatorio = null;
         let chartPizzaInstancia = null; 
-        let horarioCorteTurno = 0;
+        let horarioCorteTurno = 0; 
+        let operadorLogado = "Almoxarife";
+
+        const bancoProdutosEAN = {
+            "7891234567890": { descricao: "Fita de Borda Louro Freijó 22mm", custo: 15.50 },
+            "7891234567891": { descricao: "Cola de Contato Brascoplast 2.8kg", custo: 89.90 },
+            "7891234567892": { descricao: "Parafuso Corrediça 3.5x16mm (Cento)", custo: 8.00 },
+            "7891234567893": { descricao: "Dispositivo Montagem VB 36", custo: 2.50 },
+            "7891234567894": { descricao: "Pino para Prateleira Zincado 5mm", custo: 0.45 },
+            "7891234567895": { descricao: "Corrediça Telescópica 450mm (Par)", custo: 24.90 },
+            "7891234567896": { descricao: "Dobradiça Caneco 35mm Click", custo: 6.80 }
+        };
+
+        window.alternarAbaMobile = function(abaNome, elementoBtn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if(elementoBtn) elementoBtn.classList.add('active');
+
+            document.getElementById('card-aba-venda').classList.remove('active-tab-card');
+            document.getElementById('card-aba-carrinho').classList.remove('active-tab-card');
+            document.getElementById('card-aba-fechamento').classList.remove('active-tab-card');
+            document.getElementById('card-aba-logs').classList.remove('active-tab-card');
+
+            if(abaNome === 'venda') document.getElementById('card-aba-venda').classList.add('active-tab-card');
+            if(abaNome === 'carrinho') document.getElementById('card-aba-carrinho').classList.add('active-tab-card');
+            if(abaNome === 'fechamento') document.getElementById('card-aba-fechamento').classList.add('active-tab-card');
+            if(abaNome === 'logs') document.getElementById('card-aba-logs').classList.add('active-tab-card');
+            
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        };
+
+        window.buscarProdutoPorEAN = function(eanDigitado) {
+            const eanLimpo = eanDigitado.trim();
+            const txtDescricao = document.getElementById('produto-descricao-tela');
+            const inputValor = document.getElementById('valor');
+
+            if (bancoProdutosEAN[eanLimpo]) {
+                const item = bancoProdutosEAN[eanLimpo];
+                txtDescricao.value = item.descricao;
+                inputValor.value = item.custo.toFixed(2);
+            } else {
+                txtDescricao.value = "";
+                inputValor.value = "";
+            }
+        };
+
+        async function sincronizarHorarioCorteCloud() {
+            try {
+                const docRef = doc(db, "configuracoes", "turno_almox_atual");
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    horarioCorteTurno = docSnap.data().horarioCorte || 0;
+                } else {
+                    horarioCorteTurno = 0;
+                }
+            } catch (e) {
+                horarioCorteTurno = localStorage.getItem('horarioCorteAlmox') ? parseInt(localStorage.getItem('horarioCorteAlmox')) : 0;
+            }
+        }
+
+        window.validarAcessoSecure = async function(event) {
+            event.preventDefault();
+            const usuarioInput = document.getElementById('login-usuario').value.trim();
+            const senhaInput = document.getElementById('login-senha').value.trim();
+            const hashValido = "MTczOQ=="; // btoa("1739")
+
+            if (usuarioInput.toLowerCase() === "kleber" && btoa(senhaInput) === hashValido) {
+                operadorLogado = usuarioInput;
+                document.getElementById('tela-login').style.display = 'none';
+                document.getElementById('conteudo-sistema').style.display = 'block';
+                await sincronizarHorarioCorteCloud();
+                carregarHistoricoDoFirebase();
+            } else {
+                alert("Usuário ou Senha incorretos!");
+                document.getElementById('login-senha').value = '';
+            }
+        };
+
+        async function carregarHistoricoDoFirebase() {
+            try {
+                await sincronizarHorarioCorteCloud();
+                const q = query(collection(db, "pedidos"), orderBy("numeroLote", "desc"));
+                const querySnapshot = await getDocs(q);
+                
+                historicoGeralPedidos = [];
+                const corpoHistorico = document.getElementById('corpo-historico');
+                corpoHistorico.innerHTML = '';
+                
+                let maiorNumeroTurnoAtual = 0;
+
+                querySnapshot.forEach((doc) => {
+                    const dados = doc.data();
+                    const milisegundosDoc = dados.timestamp ? dados.timestamp.toMillis() : 0;
+
+                    if (milisegundosDoc > horarioCorteTurno && dados.numeroLote !== undefined) {
+                        dados.firebaseId = doc.id;
+                        historicoGeralPedidos.push(dados);
+                        
+                        if (dados.numeroLote > maiorNumeroTurnoAtual) {
+                            maiorNumeroTurnoAtual = dados.numeroLote;
+                        }
+
+                        let resumoItens = dados.itens.map(i => `(${i.qtd}x) ${i.descricao}`).join('<br>');
+                        
+                        let badgeFluxo = dados.fluxo === "SAÍDA" ? 
+                            `<span style="font-size:11px; font-weight:700; padding:4px 8px; background:#fee2e2; border-radius:6px; color:#dc2626;">📉 SAÍDA</span>` :
+                            `<span style="font-size:11px; font-weight:700; padding:4px 8px; background:#dcfce7; border-radius:6px; color:#16a34a;">📈 ENTRADA</span>`;
+
+                        corpoHistorico.innerHTML += `
+                            <tr>
+                                <td data-label="Nº Lote"><strong style="color:var(--cor-principal)">#${String(dados.numeroLote).padStart(2, '0')}</strong></td>
+                                <td data-label="Hora">${dados.hora || '00:00'}</td>
+                                <td data-label="Operador / Obs"><strong>${dados.operador}</strong><br><small style="color:#64748b;">${dados.obsGeral}</small></td>
+                                <td data-label="Materiais">${resumoItens}</td>
+                                <td data-label="Fluxo">${badgeFluxo}</td>
+                                <td data-label="Custo Total"><strong>R$ ${parseFloat(dados.totalCusto || 0).toFixed(2)}</strong></td>
+                                <td><button class="btn-reprint" onclick="reimprimirDocumento('${doc.id}')">🖨️ Emitir</button></td>
+                            </tr>
+                        `;
+                    }
+                });
+                
+                contadorPedidos = maiorNumeroTurnoAtual + 1;
+                historicoGeralPedidos.reverse();
+            } catch (erro) {
+                console.error("Erro Firebase: ", erro);
+            }
+        }
+
+        function gerarHtmlFitaVia(pedido, nomeVia) {
+            let linesProdutosHtml = '';
+            pedido.itens.forEach((item) => {
+                linesProdutosHtml += `
+                    <div class="ticket-item">
+                        <div class="ticket-item-main">
+                            <span class="ticket-item-name">${item.qtd}x [${item.ean}] - ${item.descricao}</span>
+                            <span class="ticket-item-price">Un: R$ ${parseFloat(item.precoUnitario).toFixed(2)}</span>
+                        </div>
+                        <div class="ticket-item-obs">${item.obsItem !== 'Sem obs' ? 'Destino: ' + item.obsItem : ''}</div>
+                    </div>
+                `;
+            });
+
+            return `
+                <div class="ticket-wrapper-via">
+                    <div class="ticket-header">
+                        <div class="ticket-via-tag">--- VIA: ${nomeVia} ---</div><br>
+                        <span class="ticket-header-title">COMPROVANTE DE ALMOXARIFADO</span>
+                        <div class="ticket-divider">--------------------------------</div>
+                        <div class="ticket-wrapper-via-num"><span class="ticket-header-num-destaque"><strong>LOTE #${String(pedido.numeroLote).padStart(2, '0')}</strong></span></div>
+                        <div class="ticket-divider">--------------------------------</div>
+                        <div style="font-size: 10px; font-weight: bold; margin-top:2px;">HORA: ${pedido.hora} | OPERADOR: ${pedido.operador}</div>
+                    </div>
+                    <div class="ticket-divider">--------------------------------</div>
+                    <div class="ticket-client-info">
+                        <strong>FLUXO:</strong> ${pedido.fluxo}<br>
+                        <strong>MOTIVO/OS:</strong> ${pedido.obsGeral}
+                    </div>
+                    <div class="ticket-divider">================================</div>
+                    <div style="font-weight: bold; font-size: 10px; margin-bottom: 2px; text-transform: uppercase;">MATERIAIS:</div>
+                    <div>${linesProdutosHtml}</div>
+                    <div class="ticket-divider">--------------------------------</div>
+                    <div class="ticket-total-container">
+                        <span>CUSTO DO LOTE:</span>
+                        <span>R$ ${parseFloat(pedido.totalCusto || 0).toFixed(2)}</span>
+                    </div>
+                    <div class="ticket-divider">================================</div>
+                    <div style="text-align:center; font-size:9.5px; font-weight:bold;">KS Cortes — Insumos</div>
+                    <div class="ticket-divider">--------------------------------</div>
+                    <br><br><br><br><br>
+                </div>
+            `;
+        }
+
+        function gerarHtmlOSMeioAMeio(pedido, nomeVia) {
+            let trsItens = '';
+            pedido.itens.forEach((item, index) => {
+                trsItens += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${item.ean}</td>
+                        <td><strong>${item.descricao}</strong></td>
+                        <td>${item.qtd}</td>
+                        <td>R$ ${parseFloat(item.precoUnitario).toFixed(2)}</td>
+                        <td>R$ ${parseFloat(item.valor).toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+
+            return `
+                <div class="os-via-a4">
+                    <table class="os-header-table">
+                        <tr>
+                            <td>
+                                <span class="os-header-title">KS CORTES — ORDEM DE REQUISIÇÃO DE INSUMOS</span><br>
+                                <small style="color:#475569; font-weight:bold;">Via Destinada: ${nomeVia}</small>
+                            </td>
+                            <td class="os-badge-numero">OS #${String(pedido.numeroLote).padStart(3, '0')}</td>
+                        </tr>
+                    </table>
+
+                    <div class="os-meta-dados">
+                        <strong>Data/Hora Emissão:</strong> ${pedido.data} | 
+                        <strong>Responsável TI/Almox:</strong> ${pedido.operador}<br>
+                        <strong>Projeto / Centro de Custo / Finalidade:</strong> ${pedido.obsGeral}
+                    </div>
+
+                    <table class="os-tabela-itens">
+                        <thead>
+                            <tr>
+                                <th style="width:5%">Item</th>
+                                <th style="width:15%">EAN</th>
+                                <th style="width:50%">Especificação do Material</th>
+                                <th style="width:8%">Qtd</th>
+                                <th style="width:11%">V. Unit</th>
+                                <th style="width:11%">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${trsItens}
+                            <tr>
+                                <td colspan="5" style="text-align:right; font-weight:bold; background:#f8fafc;">VALOR TOTAL DO COMPLEMENTO:</td>
+                                <td style="font-weight:bold; background:#f8fafc; color:#1e293b;">R$ ${parseFloat(pedido.totalCusto).toFixed(2)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="os-bloco-assinaturas">
+                        <div class="os-campo-assinatura">
+                            <div class="os-linha-assinatura"></div>
+                            <span>Almoxarifado / Responsável Entrega</span>
+                        </div>
+                        <div class="os-campo-assinatura">
+                            <div class="os-linha-assinatura"></div>
+                            <span>Colaborador / Quem Retirou</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.reimprimirDocumento = function(firebaseId) {
+            const pedidoMestre = historicoGeralPedidos.find(p => p.firebaseId === firebaseId);
+            if (!pedidoMestre) {
+                alert("Lote não localizado.");
+                return;
+            }
+
+            if (pedidoMestre.fluxo === "SAÍDA") {
+                const containerOS = document.getElementById('os-a4-print');
+                containerOS.innerHTML = `
+                    ${gerarHtmlOSMeioAMeio(pedidoMestre, "COMPROVANTE DE PROCESSO")}
+                    <div class="os-linha-corte"><span>Recorte aqui — KS Cortes</span></div>
+                    ${gerarHtmlOSMeioAMeio(pedidoMestre, "VIA ARQUIVO ALMOXARIFADO")}
+                `;
+                document.body.className = "modo-impressao-os-a4";
+            } else {
+                const containerFita = document.getElementById('ticket-print');
+                containerFita.innerHTML = gerarHtmlFitaVia(pedidoMestre, "ARQUIVO") + gerarHtmlFitaVia(pedidoMestre, "PRODUÇÃO");
+                document.body.className = "modo-impressao-ticket";
+            }
+
+            window.print();
+        };
+
+        window.adicionarItem = function(event) {
+            event.preventDefault();
+            const ean = document.getElementById('produto-ean').value.trim();
+            const descricaoMaterial = document.getElementById('produto-descricao-tela').value;
+            const obsItem = document.getElementById('descricao').value.trim();
+            const precoUnitario = parseFloat(document.getElementById('valor').value);
+            const qtd = parseInt(document.getElementById('quantidade').value);
+            const fluxo = document.getElementById('tipo-movimentacao').value;
+
+            if(!descricaoMaterial) {
+                alert("Por favor, certifique-se de que o EAN bípado está cadastrado.");
+                return;
+            }
+
+            const subtotalItem = precoUnitario * qtd;
+
+            pedidoAtual.push({ 
+                id: Date.now(), 
+                ean: ean, 
+                descricao: descricaoMaterial, 
+                obsItem: obsItem || "Sem obs", 
+                precoUnitario: precoUnitario, 
+                qtd: qtd, 
+                valor: subtotalItem,
+                fluxo: fluxo
+            });
+            
+            atualizarInterface();
+
+            document.getElementById('produto-ean').value = '';
+            document.getElementById('produto-descricao-tela').value = '';
+            document.getElementById('descricao').value = '';
+            document.getElementById('valor').value = '';
+            document.getElementById('quantidade').value = '1';
+            document.getElementById('produto-ean').focus();
+
+            if(window.innerWidth < 950) {
+                alert("Material inserido no lote!");
+            }
+        };
+
+        window.removerItem = function(id) {
+            pedidoAtual = pedidoAtual.filter(item => item.id !== id);
+            atualizarInterface();
+        };
+
+        function atualizarInterface() {
+            const autoLista = document.getElementById('lista-itens');
+            autoLista.innerHTML = '';
+            let total = 0;
+
+            pedidoAtual.forEach(item => {
+                total += item.valor;
+                autoLista.innerHTML += `
+                    <li class="item-carrinho">
+                        <div style="padding-right: 8px;">
+                            <strong>${item.qtd}x - ${item.descricao}</strong><br>
+                            <small style="color: var(--cor-texto-secundario)">EAN: ${item.ean} | Custo: R$ ${item.valor.toFixed(2)} | Regra: ${item.fluxo}</small>
+                        </div>
+                        <button class="btn-del" onclick="removerItem(${item.id})">×</button>
+                    </li>
+                `;
+            });
+            document.getElementById('total-valor').innerText = total.toFixed(2);
+
+            const badge = document.getElementById('badge-contador-id');
+            if(pedidoAtual.length > 0) {
+                badge.innerText = pedidoAtual.length;
+                badge.style.display = 'block';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        window.finalizarEImprimirTicket = async function() {
+            if (pedidoAtual.length === 0) {
+                alert("Nenhum material inserido no lote corrente!");
+                return;
+            }
+
+            const obsGeralLote = prompt("Destinação padrão / Observação do Lote:", "Consumo Linha de Produção MDF");
+            if(obsGeralLote === null) return;
+
+            const fluxoPrincipal = pedidoAtual[0].fluxo;
+
+            const agora = new Date();
+            const dataFormatada = agora.toLocaleDateString('pt-BR') + ' ' + agora.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'});
+            const horaSimples = agora.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'});
+
+            let totalCustoLote = 0;
+            let itensListaSimples = [];
+
+            pedidoAtual.forEach((item) => {
+                totalCustoLote += item.valor;
+                itensListaSimples.push(`(${item.qtd}x) [${item.ean}] ${item.descricao} - Obs: ${item.obsItem}`);
+            });
+
+            const documentoLote = {
+                numeroLote: contadorPedidos,
+                data: dataFormatada,
+                hora: horaSimples,
+                operador: operadorLogado.toUpperCase(),
+                obsGeral: obsGeralLote || "Sem obs adicionais",
+                itens: [...pedidoAtual],
+                itensTxt: itensListaSimples.join('<br>'),
+                fluxo: fluxoPrincipal,
+                totalCusto: totalCustoLote,
+                timestamp: Timestamp.now()
+            };
+
+            try {
+                await addDoc(collection(db, "pedidos"), documentoLote);
+                
+                if (fluxoPrincipal === "SAÍDA") {
+                    const containerOS = document.getElementById('os-a4-print');
+                    containerOS.innerHTML = `
+                        ${gerarHtmlOSMeioAMeio(documentoLote, "COMPROVANTE DE PROCESSO")}
+                        <div class="os-linha-corte"><span>Recorte aqui — KS Cortes</span></div>
+                        ${gerarHtmlOSMeioAMeio(documentoLote, "VIA ARQUIVO ALMOXARIFADO")}
+                    `;
+                    document.body.className = "modo-impressao-os-a4";
+                } else {
+                    const containerFita = document.getElementById('ticket-print');
+                    containerFita.innerHTML = gerarHtmlFitaVia(documentoLote, "ARQUIVO") + gerarHtmlFitaVia(documentoLote, "PRODUÇÃO");
+                    document.body.className = "modo-impressao-ticket";
+                }
+
+                await carregarHistoricoDoFirebase();
+                window.print();
+
+                pedidoAtual = [];
+                atualizarInterface();
+
+                if(window.innerWidth < 950) {
+                    alternarAbaMobile('venda', document.querySelector('.mobile-tabs-nav .tab-btn:first-child'));
+                }
+            } catch (erro) {
+                alert("Erro ao conectar com o Firebase!");
+                console.error(erro);
+            }
+        };
+
+        window.calcularFechamentoDiario = function() {
+            if (historicoGeralPedidos.length === 0) {
+                alert("Não existem dados de movimentação no turno atual.");
+                return;
+            }
+
+            let totalEntradasMonetario = 0;
+            let totalSaidasMonetario = 0;
+            let volumeItensMovimentados = 0;
+            let performancePorItem = {};
+
+            historicoGeralPedidos.forEach(p => {
+                let totalCustoMatematico = parseFloat(p.totalCusto || 0);
+                
+                if (p.fluxo === "ENTRADA") {
+                    totalEntradasMonetario += totalCustoMatematico;
+                } else if (p.fluxo === "SAÍDA") {
+                    totalSaidasMonetario += totalCustoMatematico;
+                }
+
+                p.itens.forEach(i => {
+                    let itemQtd = parseInt(i.qtd || 1); 
+                    volumeItensMovimentados += itemQtd;
+                    
+                    if (!performancePorItem[i.descricao]) {
+                        performancePorItem[i.descricao] = 0;
+                    }
+                    performancePorItem[i.descricao] += parseFloat(i.valor || 0);
+                });
+            });
+
+            let balancoMonetarioFinal = totalEntradasMonetario - totalSaidasMonetario;
+            let ticketMedioLotes = (totalEntradasMonetario + totalSaidasMonetario) / historicoGeralPedidos.length;
+            
+            const agora = new Date();
+            const dataHoraString = `Compilação: ${agora.toLocaleDateString('pt-BR')} às ${agora.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'})}`;
+
+            document.getElementById('t-dash-faturamento').innerText = 'R$ ' + balancoMonetarioFinal.toFixed(2);
+            document.getElementById('t-dash-qtd-pedidos').innerText = historicoGeralPedidos.length + ` lotes (${volumeItensMovimentados} un)`;
+            document.getElementById('t-dash-ticket-medio').innerText = 'R$ ' + ticketMedioLotes.toFixed(2);
+            
+            const statusAlmox = balancoMonetarioFinal >= 0 ? "SUPERÁVIT DE ESTOQUE" : "CONSUMO INTERNO ATIVO";
+            const divLinhaFechamento = document.getElementById('linha-fechamento-vendedor');
+            divLinhaFechamento.innerHTML = `⚠️ <strong>LINHA DE FECHAMENTO:</strong> Custos de Entradas: R$ ${totalEntradasMonetario.toFixed(2)} | Custos de Saídas (Fábrica): R$ ${totalSaidasMonetario.toFixed(2)} | Balanço Líquido: <span style="color:${balancoMonetarioFinal >= 0 ? '#16a34a':'#dc2626'}">R$ ${balancoMonetarioFinal.toFixed(2)} (${statusAlmox})</span>`;
+
+            document.getElementById('dashboard-vendas-tela').style.display = 'grid';
+
+            dadosFechamentoRelatorio = {
+                dataHora: dataHoraString,
+                faturamento: 'R$ ' + balancoMonetarioFinal.toFixed(2),
+                pedidos: historicoGeralPedidos.length + ` lotes operados (${volumeItensMovimentados} insumos)`,
+                ticket: 'R$ ' + ticketMedioLotes.toFixed(2),
+                porCategoria: performancePorItem,
+                porPagamento: { "Total Entradas": totalEntradasMonetario, "Total Saídas": totalSaidasMonetario }
+            };
+
+            const ctxPizza = document.getElementById('graficoPizzaFechamento').getContext('2d');
+            if (chartPizzaInstancia) { chartPizzaInstancia.destroy(); }
+
+            chartPizzaInstancia = new Chart(ctxPizza, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(performancePorItem),
+                    datasets: [{
+                        data: Object.values(performancePorItem),
+                        backgroundColor: ['#2e7d32', '#1565c0', '#d84315', '#ef6c00', '#fbc02d', '#6a1b9a', '#00838f', '#4e342e']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9 } } } }
+                }
+            });
+
+            document.getElementById('btn-pdf-id').style.display = 'flex';
+            document.getElementById('btn-reset-id').style.display = 'flex';
+        };
+
+        window.exportarFechamentoPDF = function() {
+            if (!dadosFechamentoRelatorio) return;
+
+            const iframePDF = document.createElement('iframe');
+            iframePDF.style.position = 'fixed'; iframePDF.style.width = '800px'; iframePDF.style.height = '600px'; iframePDF.style.top = '-10000px'; 
+            document.body.appendChild(iframePDF);
+
+            const iframeDoc = iframePDF.contentWindow.document;
+            iframeDoc.open();
+
+            let tabelaPedidosHtml = '';
+            historicoGeralPedidos.forEach(p => {
+                tabelaPedidosHtml += `
+                    <tr>
+                        <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;"><strong>#${p.numeroLote}</strong><br>${p.hora}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;"><strong>${p.operador}</strong><br>${p.obsGeral}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${p.itensTxt}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #e2e8f0; text-align:center;">${p.fluxo}</td>
+                        <td style="padding: 8px; border-bottom: 1px solid #e2e8f0; text-align:right; font-weight:bold;">R$ ${parseFloat(p.totalCusto).toFixed(2)}</td>
+                    </tr>`;
+            });
+
+            iframeDoc.write(`
+                <html>
+                <body style="font-family:Arial, sans-serif; padding:20px; color:#1e293b;">
+                    <h2>KS Cortes — Relatório de Fechamento de Insumos</h2>
+                    <p><small>${dadosFechamentoRelatorio.dataHora}</small></p>
+                    <hr>
+                    <h3>Métricas Consolidadas</h3>
+                    <p><strong>Balanço Líquido do Turno:</strong> ${dadosFechamentoRelatorio.faturamento}</p>
+                    <p><strong>Total de Lotes Operados:</strong> ${dadosFechamentoRelatorio.pedidos}</p>
+                    <p><strong>Custo Médio por Lote:</strong> ${dadosFechamentoRelatorio.ticket}</p>
+                    <hr>
+                    <h3>Log de Lotes</h3>
+                    <table style="width:100%; border-collapse:collapse; font-size:12px;">
+                        <thead><tr style="background:#f1f5f9;"><th>Lote</th><th>Destino</th><th>Materiais</th><th>Fluxo</th><th>Total</th></tr></thead>
+                        <tbody>${tabelaPedidosHtml}</tbody>
+                    </table>
+                </body>
+                </html>
+            `);
+            iframeDoc.close();
+
+            html2pdf().set({
+                margin: 15, filename: `Fechamento_KS_${new Date().toLocaleDateString('pt-BR').replace(/\//g, '-')}.pdf`,
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            }).from(iframeDoc.body).save().then(() => iframePDF.remove());
+        };
+
+        window.reiniciarTurnoComSenha = async function() {
+            const senhaDigitada = prompt("Para zerar as métricas locais e iniciar o próximo turno, digite a senha master:");
+            if (senhaDigitada === "1234") {
+                const novoHorarioCorte = Date.now();
+                try {
+                    await setDoc(doc(db, "configuracoes", "turno_almox_atual"), {
+                        horarioCorte: novoHorarioCorte,
+                        atualizadoPor: operadorLogado,
+                        timestamp: Timestamp.now()
+                    });
+                    localStorage.setItem('horarioCorteAlmox', novoHorarioCorte);
+                    horarioCorteTurno = novoHorarioCorte;
+                    historicoGeralPedidos = [];
+                    contadorPedidos = 1;
+                    dadosFechamentoRelatorio = null;
+                    document.getElementById('corpo-historico').innerHTML = ''; 
+                    document.getElementById('dashboard-vendas-tela').style.display = 'none';
+                    document.getElementById('btn-pdf-id').style.display = 'none';
+                    document.getElementById('btn-reset-id').style.display = 'none';
+                    alert("Sucesso!\nTurno do almoxarifado reiniciado globalmente.");
+                    await carregarHistoricoDoFirebase();
+                } catch(e) {
+                    alert("Erro ao resetar no Firestore.");
+                }
+            } else if (senhaDigitada !== null) {
+                alert("Senha incorreta!");
+            }
+        };
+    </script>
+</body>
+</html>
