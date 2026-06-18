@@ -382,7 +382,7 @@
                         </div>
                         <div class="form-group">
                             <label>Descrição do Material:</label>
-                            <input type="text" id="produto-descricao-tela" placeholder="Aguardando código..." readonly style="background-color: #f1f5f9; font-weight: 600;">
+                            <input type="text" id="produto-descricao-tela" placeholder="Digite a descrição se não existir..." required style="font-weight: 600;">
                         </div>
                     </div>
 
@@ -541,8 +541,11 @@
                 txtDescricao.value = item.descricao;
                 inputValor.value = item.custo.toFixed(2);
             } else {
-                txtDescricao.value = "";
-                inputValor.value = "";
+                // Modificado para NÃO limpar o que o usuário digita caso ele queira registrar um item novo na hora
+                if(eanLimpo === "") {
+                    txtDescricao.value = "";
+                    inputValor.value = "";
+                }
             }
         };
 
@@ -720,14 +723,14 @@
         window.adicionarItem = function(event) {
             event.preventDefault();
             const ean = document.getElementById('produto-ean').value.trim();
-            const descricaoMaterial = document.getElementById('produto-descricao-tela').value;
+            const descricaoMaterial = document.getElementById('produto-descricao-tela').value.trim();
             const obsItem = document.getElementById('descricao').value.trim();
             const precoUnitario = parseFloat(document.getElementById('valor').value);
             const qtd = parseInt(document.getElementById('quantidade').value);
             const fluxo = document.getElementById('tipo-movimentacao').value;
 
             if(!descricaoMaterial) {
-                alert("Por favor, certifique-se de que o EAN inserido está cadastrado na base.");
+                alert("Por favor, preencha a descrição do material.");
                 return;
             }
 
